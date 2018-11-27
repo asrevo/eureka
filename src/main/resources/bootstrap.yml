@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: eureka
+server:
+  port: 8761
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${vcap.services.EUREKA_CREDENTIALS.credentials.username}:${vcap.services.EUREKA_CREDENTIALS.credentials.password}@localhost:${server.port}/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ["*"]
+org:
+  revo:
+    env:
+      users:
+      - email: ${vcap.services.EUREKA_CREDENTIALS.credentials.username}
+        password: ${vcap.services.EUREKA_CREDENTIALS.credentials.encoded_password}
+        enable: true
+        locked: true
+        type: 111
+info:
+  app:
+    name: ${spring.application.name}
+logging:
+  file: ${spring.application.name}.log
