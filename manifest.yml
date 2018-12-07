@@ -9,7 +9,6 @@ applications:
   buildpack: java_buildpack
   path: target/eureka-0.0.1.RELEASE.jar
   services:
-  - CONFIG_CREDENTIALS
   - EUREKA_CREDENTIALS
   env:
     ORG_REVO_ENV_CONFIG_EXTERNALURL: configasrevo.cfapps.io
